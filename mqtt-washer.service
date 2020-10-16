@@ -1,0 +1,20 @@
+[Unit]
+Description=MQTT Vibration sensor
+After=network.target
+
+[Service]
+# Hack because Python can't cope with a DynamicUser with no HOME
+Environment="HOME=/"
+ExecStart=/usr/local/bin/mqtt-vibration.py
+
+DynamicUser=yes
+MemoryDenyWriteExecute=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+
+[Install]
+WantedBy=multi-user.target
