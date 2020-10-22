@@ -119,6 +119,13 @@ def check_dryer():
         print("Error posting info to mqqt")
   dryer_last_count = dryer_counter
 
+# startup
+# set running to false to reset logic
+try:
+  publish.single(washer_pub_topic, 'OFF', hostname=Broker, port=mqtt_port, auth=auth, tls={})
+  publish.single(dryer_pub_topic, 'OFF', hostname=Broker, port=mqtt_port, auth=auth, tls={})
+except:
+  print("Error posting info to mqqt")
 
 # main loop
 while True:
