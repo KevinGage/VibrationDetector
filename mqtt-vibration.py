@@ -79,6 +79,7 @@ def check_washer():
   else:
     # not running anymore so reset
     washer_counter = 0
+    washer_minutes_running = 0
     if washer_running:
       washer_running = False
       # send mqtt washer stopped
@@ -110,6 +111,7 @@ def check_dryer():
   else:
     # not running anymore so reset
     dryer_counter = 0
+    dryer_minutes_running = 0
     if dryer_running:
       dryer_running = False
       # send mqtt dryer stopped
